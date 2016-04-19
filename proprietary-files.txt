@@ -250,18 +250,10 @@ etc/sec_config
 
 # Media
 vendor/lib/libDivxDrm.so
-vendor/lib/libExtendedExtractor.so
 vendor/lib/libI420colorconvert.so
-vendor/lib/libmmosal.so
-vendor/lib/libmmparser.so
 vendor/lib/libmm-color-convertor.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxAmrwbplusDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxWmaDec.so
+vendor/lib/libmmosal.so
 vendor/lib/libSHIMDivxDrm.so
-vendor/lib/libHevcSwDecoder.so
 
 # Perf
 bin/mpdecision
@@ -269,8 +261,6 @@ vendor/lib/libqc-opt.so
 
 # Qualcomm framework
 vendor/lib/libdiag.so
-vendor/lib/libdsnetutils.so
-vendor/lib/libdsucsd.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libqcci_legacy.so
@@ -279,7 +269,6 @@ vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
-vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
@@ -326,7 +315,7 @@ vendor/lib/libmmwfdsrcinterface.so
 vendor/lib/hw/sensors.msm8226.so
 
 # Thermal
-vendor/bin/thermal-engine
+bin/thermal-engine
 vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
