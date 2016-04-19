@@ -1,4 +1,4 @@
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,8 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-LOCAL_PATH := device/samsung/ms013g
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -30,23 +28,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     SamsungDoze
 
+#GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.crda.sh \
-    init.qcom.bt.sh
-
-PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.qcom.power.rc \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    ueventd.qcom.rc \
-    init.carrier.rc \
-    init.traget.rc
+    init.target.rc
 
 PRODUCT_PACKAGES += \
     lights.msm8226
@@ -54,10 +47,6 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
-
-#GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -67,13 +56,15 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     kernel/samsung/ms013g/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    kernel/samsung/ms013g/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
-# Default.prop overrides to get adb working at boot   
+# Default.prop overrides to get adb working at boot
+ifneq ($(TARGET_BUILD_VARIANT),user) 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.adb.secure=0
+endif
 
 # Inherit from qcom-common
 $(call inherit-product, device/samsung/msm8226-common/msm8226.mk)
