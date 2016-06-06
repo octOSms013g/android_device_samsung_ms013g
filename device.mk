@@ -27,6 +27,10 @@ PRODUCT_COPY_FILES += \
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
+    
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
 
 #GPS
 PRODUCT_COPY_FILES += \
